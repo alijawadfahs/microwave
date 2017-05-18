@@ -25,10 +25,12 @@ statechart:
           - event: door_opened
             target: door opened
           - event: input_timer_inc
-            action: timer += 1 
+            guard: timer < 3600
+            action: timer += 1
             contract:
-                - always: timer < 3600
+                - always: timer < 3601
           - event: input_timer_dec
+            guard: timer > 0
             action: timer -=1
             contract:
                 - always: timer > 0

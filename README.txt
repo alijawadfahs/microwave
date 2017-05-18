@@ -11,3 +11,8 @@ the timer value is affected in 3 cases only:
 3- timer 0 : no need for contracts, the timer will be zero, thus it will not violate the conditions. 
 
 the results are verified. 
+
+(b) in the folder task 5 
+
+
+(c)  using gaurds before the actions of timer - and timer +  we can assure that we won't reach a violatation of the contracts. 
