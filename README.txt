@@ -24,4 +24,8 @@ TASK 6:
 
 I used the princple of parallel events , I don't know if this is vaild so we know that the magnetron is related.
 
-(b,c,d) It was really simple, I didn't understand why it won't work, just checked the python code, understood what's going on and it was done in 10 min. 
+(b,c,d) It was really simple, I didn't understand why it won't work, just checked the python code, understood what's going on and it was done in 10 min.
+
+UPDATE: added the missing transactions, and the results of them  
+
+

@@ -43,12 +43,18 @@ statechart:
              
           
         initial: program mode
+        
         states:
           - name: program mode
+            on entry: send('lamp_switch_off')
             transitions:
               - event: input_cooking_start
                 guard: timer > 0
                 target: cooking mode
+              - event: door_opened
+                target: door opened
+                action: send('lamp_switch_on') 
+                
           - name: cooking mode
             on entry: |
               send('heating_on')
@@ -62,6 +68,11 @@ statechart:
                   send('lamp_switch_off')
               - event: timer_tick
                 action: timer -= 1
+              - event: door_opened
+                target: door opened
+                action:
+                  send('heating_off')
+                  
       - name: door opened
         on entry: 
           send('lamp_switch_on')
