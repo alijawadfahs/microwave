@@ -22,7 +22,7 @@ DISABLED_WIDGETS = [
     # For basic microwave:
     'w_item_placed',
     'w_item_removed',
-    'w_lamp_frame',
+    #'w_lamp_frame',
     'w_weightsensor_frame',
 ]
 
