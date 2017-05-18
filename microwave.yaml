@@ -30,10 +30,10 @@ statechart:
             contract:
                 - always: timer < 3601
           - event: input_timer_dec
-            guard: timer > 0
+            guard: timer != 0
             action: timer -=1
             contract:
-                - always: timer > 0
+                - always: timer >= 0
           - event: input_timer_reset
             action: timer = 0 
              
