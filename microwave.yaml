@@ -14,6 +14,8 @@ statechart:
      heating_on
      heating_off
      beep(number:int)
+     lamp_switch_on
+     lamp_switch_off
   preamble: |
       timer = 0
   root state:
@@ -21,6 +23,8 @@ statechart:
     initial: door closed
     states:
       - name: door closed
+        on entry: 
+          send('lamp_switch_off')
         transitions: 
           - event: door_opened
             target: door opened
@@ -48,15 +52,19 @@ statechart:
           - name: cooking mode
             on entry: |
               send('heating_on')
+              send('lamp_switch_on')
             transitions: 
               - guard: timer == 0
                 target: program mode
                 action: |
                   send('heating_off')
                   send('beep', number=3)
+                  send('lamp_switch_off')
               - event: timer_tick
                 action: timer -= 1
       - name: door opened
+        on entry: 
+          send('lamp_switch_on')
         transitions:
           - event: door_closed
             target: door closed
