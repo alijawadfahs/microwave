@@ -1,0 +1,21 @@
+statechart:
+  name: heat must be set to off before the door is opened 
+  root state: 
+    name: root
+    initial: heating is on
+    states:
+      - name: heating is on
+        transitions:
+          - target: heating is off
+            event: event consumed
+            guard: event.event.name == 'heating_off'
+      - name: heating is off
+        transitions:
+          - target: heating is on
+            event: event consumed
+            guard: event.event.name == 'heating_on'
+          - target: failure
+            event: event sent
+            guard: event.event.name == 'time_tick'
+      - name: failure
+        type: final
