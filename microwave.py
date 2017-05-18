@@ -20,10 +20,10 @@ DISABLED_WIDGETS = [
     'w_heating_power',
     'w_input_cooking_stop',
     # For basic microwave:
-    'w_item_placed',
-    'w_item_removed',
+    #'w_item_placed',
+    #'w_item_removed',
     #'w_lamp_frame',
-    'w_weightsensor_frame',
+    #'w_weightsensor_frame',
 ]
 
 
