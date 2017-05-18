@@ -26,6 +26,13 @@ I used the princple of parallel events , I don't know if this is vaild so we kno
 
 (b,c,d) It was really simple, I didn't understand why it won't work, just checked the python code, understood what's going on and it was done in 10 min.
 
-UPDATE: added the missing transactions, and the results of them  
+UPDATE: added the missing transactions, and the results of them 
+
+
+Task 7:
+
+already finished this part, tested all the functionality.in Task 6  
+
+ 
 
 
