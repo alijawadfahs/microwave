@@ -9,6 +9,8 @@ statechart:
      timer_tick
      door_opened
      door_closed
+     item_placed
+     item_removed
 
     out:
      heating_on
@@ -18,11 +20,12 @@ statechart:
      lamp_switch_off
   preamble: |
       timer = 0
+      item = 0
   root state:
     name: controller
     initial: door closed
     states:
-      - name: door closed
+      - name: door closed # # we have no conditions over item signals here , logically item can't be placed while door is closed.
         on entry: 
           send('lamp_switch_off')
         transitions: 
@@ -40,21 +43,21 @@ statechart:
                 - always: timer >= 0
           - event: input_timer_reset
             action: timer = 0 
-             
-          
+         
+
         initial: program mode
         
         states:
+ 
           - name: program mode
-            on entry: send('lamp_switch_off')
             transitions:
               - event: input_cooking_start
-                guard: timer > 0
+                guard: timer > 0 and item == 1
                 target: cooking mode
               - event: door_opened
                 target: door opened
-                action: send('lamp_switch_on') 
-                
+                action: send('lamp_switch_on')  
+         
           - name: cooking mode
             on entry: |
               send('heating_on')
@@ -79,3 +82,7 @@ statechart:
         transitions:
           - event: door_closed
             target: door closed
+          - event: item_placed
+            action: item = 1 
+          - event: item_removed
+            action: item = 0
